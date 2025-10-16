@@ -1,6 +1,7 @@
 package com.smartorder.service;
 
 import com.smartorder.client.InventoryClient;
+import com.smartorder.event.EventPublisher;
 import com.smartorder.grpc.PaymentClient;
 import com.smartorder.model.Order;
 import com.smartorder.model.Status;
@@ -17,6 +18,7 @@ public class OrderService {
 
     private final PaymentClient paymentClient;
     private final InventoryClient inventoryClient;
+    private final EventPublisher eventPublisher;
 
     private final Map<Long, Order> db = new HashMap<>();
 
@@ -32,7 +34,10 @@ public class OrderService {
         }
 
         boolean paid = paymentClient.processPayment(order.getId().toString(), order.getAmount());
-        if (paid) order.setStatus(Status.PAID);
+        if (paid){
+            order.setStatus(Status.PAID);
+            eventPublisher.publishOrderPaid(order.getId());
+        }
         else order.setStatus(Status.FAILED);
 
         db.put(order.getId(), order);
