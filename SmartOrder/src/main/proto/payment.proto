@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.smartorder.grpc";
+option java_outer_classname = "PaymentProto";
+
+package com.smartorder.grpc;
+
+service PaymentService {
+  rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
+}
+
+message PaymentRequest {
+  string order_id = 1;
+  double amount = 2;
+}
+
+message PaymentResponse {
+  bool success = 1;
+  string transaction_id = 2;
+  string message = 3;
+}
