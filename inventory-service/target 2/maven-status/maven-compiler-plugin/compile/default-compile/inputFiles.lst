@@ -1,0 +1,12 @@
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/target/generated-sources/protobuf/java/com/smartorder/inventory/grpc/StockResponseOrBuilder.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/src/main/java/com/smartorder/inventory/service/InventoryService.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/target/generated-sources/protobuf/java/com/smartorder/inventory/grpc/InventoryProto.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/src/main/java/com/smartorder/inventory/controller/InventoryController.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/target/generated-sources/protobuf/grpc-java/com/smartorder/inventory/grpc/InventoryServiceGrpc.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/src/main/java/com/smartorder/inventory/model/Product.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/src/main/java/com/smartorder/inventory/repository/ProductRepository.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/src/main/java/com/smartorder/inventory/grpc/InventoryServiceImpl.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/target/generated-sources/protobuf/java/com/smartorder/inventory/grpc/StockRequestOrBuilder.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/src/main/java/com/smartorder/inventory/InventoryServiceApplication.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/target/generated-sources/protobuf/java/com/smartorder/inventory/grpc/StockResponse.java
+/Users/sametavci/Desktop/Projekt/MicroService/inventory-service/target/generated-sources/protobuf/java/com/smartorder/inventory/grpc/StockRequest.java

@@ -1,0 +1,36 @@
+# IntelliJ / Eclipse / VSCode config dosyaları
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Maven ve Gradle build output
+target/
+build/
+out/
+
+# Log dosyaları
+*.log
+logs/
+*.out
+
+# İşletim sistemi cache dosyaları
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+*.tar
+docker-compose.override.yml
+
+# Test verileri
+*.test
+test-output/
+
+# Çevre değişkenleri (GİZLİ BİLGİLER)
+.env
+
+# Spring Boot config cache
+*.jar.original
