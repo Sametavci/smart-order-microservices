@@ -8,7 +8,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write      # GitHub → AWS OIDC için
+      id-token: write      
       contents: read
     steps:
       - name: Checkout code
@@ -30,7 +30,7 @@ jobs:
           ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           REGION=${{ secrets.AWS_REGION }}
           GIT_SHA=$(git rev-parse --short HEAD)
-          declare -a SERVICES=("SmartOrder" "inventory-service" "notification-service" "payment-service")
+          declare -a SERVICES=("smartorder" "inventory-service" "notification-service" "payment-service")
 
           for SVC in "${SERVICES[@]}"; do
             IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$SVC:$GIT_SHA"
