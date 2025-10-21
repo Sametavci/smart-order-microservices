@@ -35,6 +35,6 @@ jobs:
           for SVC in "${SERVICES[@]}"; do
             IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$SVC:$GIT_SHA"
             echo "📦 Building and pushing $IMAGE"
-            docker build -t "$IMAGE" "./services/$SVC"
+            docker build -t "$IMAGE" "./$SVC"
             docker push "$IMAGE"
           done
