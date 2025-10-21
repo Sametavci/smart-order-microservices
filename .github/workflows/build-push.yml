@@ -33,7 +33,7 @@ jobs:
           declare -a SERVICES=("SmartOrder" "inventory-service" "notification-service" "payment-service")
 
           for SVC in "${SERVICES[@]}"; do
-            IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smartorder/$SVC:$GIT_SHA"
+            IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$SVC:$GIT_SHA"
             echo "📦 Building and pushing $IMAGE"
             docker build -t "$IMAGE" "./services/$SVC"
             docker push "$IMAGE"
