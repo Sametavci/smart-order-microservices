@@ -1,12 +1,49 @@
+server:
+  port: 8080
+
 spring:
+  datasource:
+    url: jdbc:h2:mem:smartorderdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
   kafka:
-    bootstrap-servers: kafka:9092
+    # Kafka henüz MSK veya ECS içinde yok — geçici olarak dummy adres
+    bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-  management:
-    endpoints:
-      web:
-        exposure:
-          include: mappings
 
+grpc:
+  client:
+    inventory-service:
+      address: static://inventory-service.smartorder.local:50052
+      negotiation-type: plaintext
+    payment-service:
+      address: static://payment-service.smartorder.local:50051
+      negotiation-type: plaintext
+
+inventory:
+  host: inventory-service.smartorder.local
+  port: 50052
+
+payment:
+  host: payment-service.smartorder.local
+  port: 50051
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    root: INFO
+    com.smartorder: DEBUG
+    org.springframework.kafka: WARN
