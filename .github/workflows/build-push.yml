@@ -8,7 +8,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write      
+      id-token: write      # GitHub → AWS OIDC için
       contents: read
     steps:
       - name: Checkout code
@@ -30,11 +30,15 @@ jobs:
           ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           REGION=${{ secrets.AWS_REGION }}
           GIT_SHA=$(git rev-parse --short HEAD)
-          declare -a SERVICES=("smartorder" "inventory-service" "notification-service" "payment-service")
 
-          for SVC in "${SERVICES[@]}"; do
-            IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$SVC:$GIT_SHA"
-            echo "📦 Building and pushing $IMAGE"
-            docker build -t "$IMAGE" "./$SVC"
+          declare -a SERVICES=("SmartOrder:smartorder" "inventory-service:inventory-service" "notification-service:notification-service" "payment-service:payment-service")
+
+          for PAIR in "${SERVICES[@]}"; do
+            SRC=${PAIR%%:*}   # klasör ismi (örnek: SmartOrder)
+            DEST=${PAIR##*:}  # ecr repo ismi (örnek: smartorder)
+            IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$DEST:$GIT_SHA"
+            
+            echo "📦 Building and pushing $SRC → $IMAGE"
+            docker build -t "$IMAGE" "./$SRC"
             docker push "$IMAGE"
           done
