@@ -1,7 +1,7 @@
 FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
-COPY target/inventory-service-0.0.1-SNAPSHOT.jar app.jar
+COPY ["target 2/inventory-service-0.0.1-SNAPSHOT.jar", "app.jar"]
 
 EXPOSE 8081 50052
 
