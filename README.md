@@ -11,11 +11,9 @@ Das Projekt basiert auf Spring Boot, Kafka, Docker und einem Python Payment-Serv
 - **Inventory Service** → überwacht Lagerbestände  
 - **Notification Service** → sendet automatische E-Mail-Benachrichtigungen  
 - **Kafka** → Eventbasierte Kommunikation zwischen den Services
-
 ---
 
 ##  Installation & Start
-
 ### Voraussetzungen
 - [Docker & Docker Compose](https://docs.docker.com/get-docker/)  
 - Java 17  
