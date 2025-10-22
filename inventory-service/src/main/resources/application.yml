@@ -1,6 +1,4 @@
-server:
-  port: 8081
-
-grpc:
-  server:
+inventory:
+  grpc:
+    host: inventory-service
     port: 50052
