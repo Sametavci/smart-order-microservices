@@ -34,3 +34,7 @@ test-output/
 
 # Spring Boot config cache
 *.jar.original
+.venv/
+__pycache__/
+*.pyc
+*.log
