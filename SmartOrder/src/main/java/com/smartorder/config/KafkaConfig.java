@@ -24,9 +24,16 @@ public class KafkaConfig {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-        System.out.println("🧩 [KafkaConfig] ProducerFactory initialized with JsonSerializer, bootstrap: " + bootstrapServers);
+
+        config.put("security.protocol", "SASL_SSL");
+        config.put("sasl.mechanism", "AWS_MSK_IAM");
+        config.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
+        config.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");
+
+        System.out.println("🧩 [KafkaConfig] ProducerFactory initialized with AWS MSK IAM and JsonSerializer, bootstrap: " + bootstrapServers);
         return new DefaultKafkaProducerFactory<>(config);
     }
+
 
     @Bean
     public KafkaTemplate<String, Object> kafkaTemplate() {
@@ -40,6 +47,10 @@ public class KafkaConfig {
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        config.put("security.protocol", "SASL_SSL");
+        config.put("sasl.mechanism", "AWS_MSK_IAM");
+        config.put("sasl.jaas.config", "software.amazon.msk.auth.iam.IAMLoginModule required;");
+        config.put("sasl.client.callback.handler.class", "software.amazon.msk.auth.iam.IAMClientCallbackHandler");
         System.out.println("🧩 [KafkaConfig] String ProducerFactory initialized, bootstrap: " + bootstrapServers);
         return new DefaultKafkaProducerFactory<>(config);
     }
