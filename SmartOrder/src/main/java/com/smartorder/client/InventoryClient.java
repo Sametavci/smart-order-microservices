@@ -5,6 +5,7 @@ import com.smartorder.inventory.grpc.StockRequest;
 import com.smartorder.inventory.grpc.StockResponse;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,12 +13,18 @@ public class InventoryClient {
 
     private final InventoryServiceGrpc.InventoryServiceBlockingStub stub;
 
-    public InventoryClient() {
+    public InventoryClient(
+            @Value("${inventory.host}") String host,
+            @Value("${inventory.port}") int port) {
+
         ManagedChannel channel = ManagedChannelBuilder
-                .forAddress("inventory-service", 50052)
+                .forAddress(host, port)
                 .usePlaintext()
                 .build();
-        stub = InventoryServiceGrpc.newBlockingStub(channel);
+
+        this.stub = InventoryServiceGrpc.newBlockingStub(channel);
+
+        System.out.println("✅ [InventoryClient] gRPC channel initialized to " + host + ":" + port);
     }
 
     public boolean checkStock(String productId, int quantity) {
