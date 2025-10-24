@@ -7,5 +7,5 @@ RUN pip install --no-cache-dir grpcio grpcio-tools
 
 EXPOSE 50051
 
-CMD ["python", "payment_service.py"]
+CMD ["python3", "payment_service.py"]
 
