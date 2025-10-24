@@ -1,10 +1,8 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "com.smartorder.grpc";
+option java_package = "com.smartorder.payment.grpc";
 option java_outer_classname = "PaymentProto";
-
-package com.smartorder.grpc;
 
 service PaymentService {
   rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
