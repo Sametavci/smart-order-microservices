@@ -5,7 +5,7 @@ import warnings
 
 import payment_pb2 as payment__pb2
 
-GRPC_GENERATED_VERSION = '1.75.1'
+GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in payment_pb2_grpc.py depends on'
+        + ' but the generated code in payment_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -35,7 +35,7 @@ class PaymentServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ProcessPayment = channel.unary_unary(
-                '/com.smartorder.grpc.PaymentService/ProcessPayment',
+                '/PaymentService/ProcessPayment',
                 request_serializer=payment__pb2.PaymentRequest.SerializeToString,
                 response_deserializer=payment__pb2.PaymentResponse.FromString,
                 _registered_method=True)
@@ -60,9 +60,9 @@ def add_PaymentServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'com.smartorder.grpc.PaymentService', rpc_method_handlers)
+            'PaymentService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('com.smartorder.grpc.PaymentService', rpc_method_handlers)
+    server.add_registered_method_handlers('PaymentService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -83,7 +83,7 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/com.smartorder.grpc.PaymentService/ProcessPayment',
+            '/PaymentService/ProcessPayment',
             payment__pb2.PaymentRequest.SerializeToString,
             payment__pb2.PaymentResponse.FromString,
             options,

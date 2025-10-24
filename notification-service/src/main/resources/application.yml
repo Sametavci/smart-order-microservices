@@ -1,6 +1,12 @@
 spring:
   kafka:
-    bootstrap-servers: kafka:9092
+    bootstrap-servers: boot-bfgwhvlm.c1.kafka-serverless.eu-north-1.amazonaws.com:9098  # ✅ AWS MSK Serverless endpoint
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: AWS_MSK_IAM
+      sasl.jaas.config: software.amazon.msk.auth.iam.IAMLoginModule required;
+      sasl.client.callback.handler.class: software.amazon.msk.auth.iam.IAMClientCallbackHandler
+
     consumer:
       group-id: notification-group
       auto-offset-reset: earliest
@@ -11,6 +17,7 @@ spring:
         spring.json.trusted.packages: "*"
         spring.json.value.default.type: com.smartorder.model.NotificationEvent
         spring.json.ignore.unknown: true
+
 
   mail:
     host: ${MAIL_HOST}

@@ -24,18 +24,18 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rpayment.proto\x12\x13\x63om.smartorder.grpc\"2\n\x0ePaymentRequest\x12\x10\n\x08order_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x01\"K\n\x0fPaymentResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x16\n\x0etransaction_id\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t2m\n\x0ePaymentService\x12[\n\x0eProcessPayment\x12#.com.smartorder.grpc.PaymentRequest\x1a$.com.smartorder.grpc.PaymentResponseB%\n\x13\x63om.smartorder.grpcB\x0cPaymentProtoP\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rpayment.proto\"2\n\x0ePaymentRequest\x12\x10\n\x08order_id\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x01\"K\n\x0fPaymentResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x16\n\x0etransaction_id\x18\x02 \x01(\t\x12\x0f\n\x07message\x18\x03 \x01(\t2E\n\x0ePaymentService\x12\x33\n\x0eProcessPayment\x12\x0f.PaymentRequest\x1a\x10.PaymentResponseB-\n\x1b\x63om.smartorder.payment.grpcB\x0cPaymentProtoP\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'payment_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\023com.smartorder.grpcB\014PaymentProtoP\001'
-  _globals['_PAYMENTREQUEST']._serialized_start=38
-  _globals['_PAYMENTREQUEST']._serialized_end=88
-  _globals['_PAYMENTRESPONSE']._serialized_start=90
-  _globals['_PAYMENTRESPONSE']._serialized_end=165
-  _globals['_PAYMENTSERVICE']._serialized_start=167
-  _globals['_PAYMENTSERVICE']._serialized_end=276
+  _globals['DESCRIPTOR']._serialized_options = b'\n\033com.smartorder.payment.grpcB\014PaymentProtoP\001'
+  _globals['_PAYMENTREQUEST']._serialized_start=17
+  _globals['_PAYMENTREQUEST']._serialized_end=67
+  _globals['_PAYMENTRESPONSE']._serialized_start=69
+  _globals['_PAYMENTRESPONSE']._serialized_end=144
+  _globals['_PAYMENTSERVICE']._serialized_start=146
+  _globals['_PAYMENTSERVICE']._serialized_end=215
 # @@protoc_insertion_point(module_scope)

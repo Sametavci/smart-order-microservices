@@ -27,7 +27,7 @@ def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     # ✅ Düzgün olan fonksiyon ismi:
     payment_pb2_grpc.add_PaymentServiceServicer_to_server(PaymentService(), server)
-    server.add_insecure_port("[::]:50051")
+    server.add_insecure_port("0.0.0.0:50051")
     server.start()
     print("🚀 Payment gRPC server running on port 50051...")
     try:
