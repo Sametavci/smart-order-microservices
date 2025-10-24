@@ -1,20 +1,23 @@
-package com.smartorder.inventory.controller;
-
-import com.smartorder.inventory.grpc.InventoryServiceGrpc;
-import com.smartorder.inventory.grpc.StockRequest;
-import com.smartorder.inventory.grpc.StockResponse;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 
 @RestController
 @RequestMapping("/api/inventory")
 public class InventoryController {
 
+    private final String host;
+    private final int port;
+
+    public InventoryController(
+            @Value("${inventory.grpc.host}") String host,
+            @Value("${inventory.grpc.port}") int port) {
+        this.host = host;
+        this.port = port;
+    }
+
     @GetMapping("/check")
     public String checkStock(@RequestParam String productId, @RequestParam int quantity) {
         ManagedChannel channel = ManagedChannelBuilder
-                .forAddress("inventory-service", 50052)
+                .forAddress(host, port)
                 .usePlaintext()
                 .build();
 
