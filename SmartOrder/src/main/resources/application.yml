@@ -23,6 +23,14 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 10
+      acks: all
+      linger-ms: 5
+      max-in-flight-requests-per-connection: 5
+
+    admin:
+      auto-create: true  # ✅ topic yoksa otomatik oluştur
+
 
 grpc:
   client:
