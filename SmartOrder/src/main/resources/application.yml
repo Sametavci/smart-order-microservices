@@ -13,8 +13,7 @@ spring:
     show-sql: true
 
   kafka:
-    # Kafka henüz MSK veya ECS içinde yok — geçici olarak dummy adres
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka.smartorder.local:9092   # ✅ localhost yerine Cloud Map DNS
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
@@ -22,7 +21,7 @@ spring:
 grpc:
   client:
     inventory-service:
-      address: static://inventory-service.smartorder.local:50052
+      address: static://inventory-service.smartorder.local:50052  # ✅ Cloud Map DNS
       negotiation-type: plaintext
     payment-service:
       address: static://payment-service.smartorder.local:50051
