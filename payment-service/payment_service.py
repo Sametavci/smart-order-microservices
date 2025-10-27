@@ -14,7 +14,7 @@ import payment_pb2_grpc
 
 
 class PaymentService(payment_pb2_grpc.PaymentServiceServicer):
-    def processPayment(self, request, context):
+    def ProcessPayment(self, request, context):
         print(f"💳 Processing payment: Order {request.order_id}, Amount: {request.amount}")
         return payment_pb2.PaymentResponse(
             success=True,
