@@ -37,8 +37,15 @@ jobs:
           for PAIR in "${SERVICES[@]}"; do
             SRC=${PAIR%%:*}
             DEST=${PAIR##*:}
-            IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$DEST:$GIT_SHA"
-            LATEST_IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$DEST:latest"
+
+            # 🎯 payment-service için farklı repo kullan
+            if [ "$DEST" == "payment-service" ]; then
+              IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$DEST:$GIT_SHA"
+              LATEST_IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$DEST:latest"
+            else
+              IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$DEST:$GIT_SHA"
+              LATEST_IMAGE="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/smart-order-microservices/$DEST:latest"
+            fi
 
             echo "📦 Building and pushing $SRC → $IMAGE"
             docker build -t "$IMAGE" -t "$LATEST_IMAGE" "./$SRC"
