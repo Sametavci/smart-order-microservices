@@ -4,13 +4,15 @@ WORKDIR /app
 
 COPY . .
 
+# Logların ECS / CloudWatch’a anında gitmesi için:
+ENV PYTHONUNBUFFERED=1
+
+# gRPC bağımlılıkları
 RUN pip install --no-cache-dir grpcio grpcio-tools
 
+# Yardımcı araçlar
 RUN apt-get update && apt-get install -y procps curl net-tools && rm -rf /var/lib/apt/lists/*
 
-
-# gRPC portu
 EXPOSE 50051
 
-# Servisi başlat
 CMD ["python3", "payment_service.py"]
