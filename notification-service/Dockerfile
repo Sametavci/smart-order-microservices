@@ -7,7 +7,6 @@ COPY src ./src
 
 RUN mvn clean package -DskipTests
 
-# ---- STAGE 2: Run the app ----
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app
