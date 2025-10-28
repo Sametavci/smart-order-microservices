@@ -7,14 +7,18 @@ grpc:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:inventorydb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: password
+    url: jdbc:mysql://smartorder-inventory-db.cfu8kk0wqp6h.eu-north-1.rds.amazonaws.com:3306/inventorydb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: admin123
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+  sql:
+    init:
+      mode: always
+
 
 inventory:
   grpc:
