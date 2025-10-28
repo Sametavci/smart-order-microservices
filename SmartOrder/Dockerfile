@@ -24,7 +24,8 @@ WORKDIR /app
 
 # Debug araçları (sadece test için)
 RUN apt-get update && apt-get install -y curl net-tools procps && rm -rf /var/lib/apt/lists/*
-
+RUN curl -L https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz | tar -xz -C /opt \
+    && ln -s /opt/kafka_2.13-3.7.0/bin/* /usr/local/bin
 COPY --from=builder /app/target/SmartOrder-0.0.1-SNAPSHOT.jar ./smartorder.jar
 
 # Uygulama dış IP’lerden erişilebilsin diye
