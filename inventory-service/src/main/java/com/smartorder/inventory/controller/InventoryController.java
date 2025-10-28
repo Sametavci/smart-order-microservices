@@ -1,4 +1,15 @@
+package com.smartorder.inventory.controller;
+
+import com.smartorder.inventory.grpc.InventoryServiceGrpc;
+import com.smartorder.inventory.grpc.StockRequest;
+import com.smartorder.inventory.grpc.StockResponse;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/inventory")
