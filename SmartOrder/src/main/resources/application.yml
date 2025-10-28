@@ -33,14 +33,6 @@ spring:
       auto-create: true  # ✅ topic yoksa otomatik oluştur
 
 
-grpc:
-  client:
-    inventory-service:
-      address: static://inventory-service.smartorder.local:50052
-      negotiation-type: plaintext
-    payment-service:
-      address: static://payment-service.smartorder.local:50051
-      negotiation-type: plaintext
 
 inventory:
   host: inventory-service.smartorder.local
