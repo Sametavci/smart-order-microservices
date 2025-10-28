@@ -1,6 +1,6 @@
 spring:
   kafka:
-    bootstrap-servers: boot-bfgwhvlm.c1.kafka-serverless.eu-north-1.amazonaws.com:9098  # ✅ AWS MSK Serverless endpoint
+    bootstrap-servers: boot-bfgwhvlm.c1.kafka-serverless.eu-north-1.amazonaws.com:9098
     properties:
       security.protocol: SASL_SSL
       sasl.mechanism: AWS_MSK_IAM
@@ -20,10 +20,10 @@ spring:
 
 
   mail:
-    host: ${MAIL_HOST}
-    port: ${MAIL_PORT}
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
+    host: ${AWS_SES_SMTP_HOST}
+    port: 587
+    username: ${AWS_SES_SMTP_USERNAME}
+    password: ${AWS_SES_SMTP_PASSWORD}
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
