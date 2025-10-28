@@ -47,7 +47,7 @@ inventory:
   port: 50052
 
 payment:
-  host: payment-service.smartorder.local
+  host: payment-svc1.smartorder.local
   port: 50051
 
 management:
