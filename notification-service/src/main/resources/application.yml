@@ -6,7 +6,6 @@ spring:
       sasl.mechanism: AWS_MSK_IAM
       sasl.jaas.config: software.amazon.msk.auth.iam.IAMLoginModule required;
       sasl.client.callback.handler.class: software.amazon.msk.auth.iam.IAMClientCallbackHandler
-
     consumer:
       group-id: notification-group
       auto-offset-reset: earliest
@@ -18,19 +17,20 @@ spring:
         spring.json.value.default.type: com.smartorder.model.NotificationEvent
         spring.json.ignore.unknown: true
 
-
   mail:
     host: ${AWS_SES_SMTP_HOST}
     port: 587
     username: ${AWS_SES_SMTP_USERNAME}
     password: ${AWS_SES_SMTP_PASSWORD}
+    from: ${SPRING_MAIL_FROM}  
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-        from: ${SPRING_MAIL_FROM}   
+    default-encoding: UTF-8
+
 logging:
   level:
     org.springframework.kafka: DEBUG
