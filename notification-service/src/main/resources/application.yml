@@ -28,8 +28,9 @@ spring:
       mail:
         smtp:
           auth: true
-          starttls.enable: true
-    from: ${SPRING_MAIL_FROM}
+          starttls:
+            enable: true
+        from: ${SPRING_MAIL_FROM}   
 logging:
   level:
     org.springframework.kafka: DEBUG
