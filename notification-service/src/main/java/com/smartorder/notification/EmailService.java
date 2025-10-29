@@ -14,6 +14,7 @@ public class EmailService {
     public void sendEmail(String to, String subject, String text){
         try{
             SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setFrom(System.getenv("SPRING_MAIL_FROM"));
             msg.setTo(to);
             msg.setText(text);
             msg.setSubject(subject);
