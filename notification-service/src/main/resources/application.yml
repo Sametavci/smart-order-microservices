@@ -25,9 +25,11 @@ spring:
     username: ${AWS_SES_SMTP_USERNAME}
     password: ${AWS_SES_SMTP_PASSWORD}
     properties:
-      mail.smtp.auth: true
-      mail.smtp.starttls.enable: true
-
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+    from: ${SPRING_MAIL_FROM}
 logging:
   level:
     org.springframework.kafka: DEBUG
